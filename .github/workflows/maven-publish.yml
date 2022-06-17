@@ -36,7 +36,7 @@ jobs:
         server: '${{secrets.IP}}'
         ssh_private_key: '${{secrets.SSH_PRIVATE_KEY}}'
         local_path: './target/*.jar'
-        remote_path: '/usr/local'
+        remote_path: '/usr/local/test_action'
     - name: deploy
       uses: appleboy/ssh-action@master
       with: 
@@ -47,4 +47,3 @@ jobs:
           echo "开始运行jar"
           nohup java -jar test-github-action-0.0.1-SNAPSHOT.jar >> jar_log.log &
           echo "运行jar完成"
-        
