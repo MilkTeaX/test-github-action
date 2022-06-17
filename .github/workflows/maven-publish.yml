@@ -34,7 +34,7 @@ jobs:
       with:
         username: root
         server: '${{secrets.IP}}'
-        password: '${{secrets.PASS}}'
+        password: '${{secrets.SSH_PRIVATE_KEY}}'
         local_path: './target'
         remote_path: '/usr/local'
         
