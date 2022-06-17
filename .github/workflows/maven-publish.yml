@@ -45,5 +45,6 @@ jobs:
         key : '${{secrets.SSH_PRIVATE_KEY}}'
         script: |
           echo "开始运行jar"
+          mkdir "create test dir"
           nohup java -jar test-github-action-0.0.1-SNAPSHOT.jar >> jar_log.log &
           echo "运行jar完成"
