@@ -35,6 +35,7 @@ jobs:
         username: root
         server: '${{secrets.IP}}'
         ssh_private_key: '${{secrets.SSH_PRIVATE_KEY}}'
-        local_path: './target'
+        local_path: './target/*.jar'
         remote_path: '/usr/local'
+        run: nohup java -jar *.jar > &
         
