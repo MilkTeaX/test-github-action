@@ -30,10 +30,11 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: upload file
+      uses: wlixcc/SFTP-Deploy-Action@v1.0
       with:
         username: root
-        server: 1.117.xxx.xxx
-        password: '${{secrets.pass}}'
-        local_path: './build'
+        server: '${{secrets.IP}}'
+        password: '${{secrets.PASS}}'
+        local_path: './target'
         remote_path: '/usr/local'
         
