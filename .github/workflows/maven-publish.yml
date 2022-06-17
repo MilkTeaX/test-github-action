@@ -47,5 +47,6 @@ jobs:
           echo "开始运行jar"
           # nohup java -jar /usr/local/test_action/test-github-action-0.0.1-SNAPSHOT.jar >> /usr/local/test_action/jar_log.log &
           cat /etc/profile
+          source /etc/profile
           java -jar /usr/local/test_action/test-github-action-0.0.1-SNAPSHOT.jar
           echo "运行jar完成"
