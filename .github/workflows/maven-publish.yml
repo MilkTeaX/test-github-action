@@ -29,7 +29,13 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    - name: upload file
+      uses: wlixcc/SFTP-Deploy-Action@v1.0
+      with:
+        username: root
+        server: '${{secrets.IP}}'
+        ssh_private_key: '${{secrets.SSH_PRIVATE_KEY}}'
+        local_path: './target/*.jar'
+        remote_path: '/usr/local'
+        run: nohup java -jar *.jar > &
+        
