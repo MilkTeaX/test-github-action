@@ -39,7 +39,7 @@ jobs:
         remote_path: '/usr/local/test_action'
 
     - name: build success
-      users: fifsky/dingtalk-action@master
+      uses: fifsky/dingtalk-action@master
       with:
         url: https://oapi.dingtalk.com/robot/send?access_token=${{secrets.DINGDING_TOKEN}}
         type: markdown
