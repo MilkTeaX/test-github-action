@@ -29,13 +29,3 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
-    - name: build success
-      uses: fifsky/dingtalk-action@master
-      with:
-        url: https://oapi.dingtalk.com/robot/send?access_token=${{secrets.DINGDING_TOKEN}}
-        type: markdown
-        content: |
-          # 💯👨‍💻 Success 🎉🎉🎉
-          > Maven Build of [# ${{ env.PR_TITLE }}](${{ env.PR_URL }}) by ${{ env.PR_USER }} success
-          > ^_^ from github action message
