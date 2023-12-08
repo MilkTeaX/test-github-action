@@ -3,6 +3,7 @@
 
 name: ACTION TEST
 
+# 触发事件
 on:
   push:
     branches:
@@ -28,23 +29,3 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
-    - name: upload file
-      uses: wlixcc/SFTP-Deploy-Action@v1.0
-      with:
-        username: root
-        server: '${{secrets.IP}}'
-        ssh_private_key: '${{secrets.SSH_PRIVATE_KEY}}'
-        local_path: './target/*.jar'
-        remote_path: '/usr/local/test_action'
-    - name: deploy
-      uses: appleboy/ssh-action@master
-      with: 
-        host: '${{secrets.IP}}'
-        username: root
-        key : '${{secrets.SSH_PRIVATE_KEY}}'
-        script: |
-          echo "开始运行jar"
-          source /etc/profile
-          nohup java -jar /usr/local/test_action/test-github-action-0.0.1-SNAPSHOT.jar >> /usr/local/test_action/jar_log.log &
-          echo "运行jar完成"
